@@ -139,4 +139,25 @@ public class PlayerServiceImp implements IPlayerService {
 		repo.deleteById(playerId);
 	}
 
+	@Override
+	public PlayerDTO getByPlayerName(String playerName) throws PlayerNotFoundException {
+		
+		Player player =  repo.findByPlayerNameContainingIgnoreCase(playerName).orElseThrow(() -> new PlayerNotFoundException("No matching player name found"));
+		
+		PlayerDTO dto = new PlayerDTO();
+		
+		dto.setPlayerId(player.getPlayerId());
+		dto.setCountryName(player.getCountryName());
+		dto.setDescription(player.getDescription());
+		dto.setJerseyNumber(player.getJerseyNumber());
+		dto.setPlayerName(player.getPlayerName());
+		dto.setRole(player.getRole());
+		dto.setTeamName(player.getTeamName());
+		dto.setTotalMatches(player.getTotalMatches());
+		
+		return dto;
+		
+		
+	}
+
 }

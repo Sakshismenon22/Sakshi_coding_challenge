@@ -16,4 +16,6 @@ public interface IPlayerService {
 	PlayerDTO updatePlayer(PlayerDTO player) throws PlayerNotFoundException;
 	
 	void deletePlayerById(int playerId) throws PlayerNotFoundException;
+	
+	PlayerDTO getByPlayerName(String playerName) throws PlayerNotFoundException;
 }

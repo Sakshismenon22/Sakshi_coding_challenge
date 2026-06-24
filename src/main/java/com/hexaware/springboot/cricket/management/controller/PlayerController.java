@@ -59,4 +59,10 @@ public class PlayerController {
 		service.deletePlayerById(playerId);
 	}
 	
+	@GetMapping("/get-player-by-name/{playerName}")
+	public PlayerDTO getPlayerByName(@PathVariable String playerName) throws PlayerNotFoundException{
+		
+		return service.getByPlayerName(playerName);
+		
+	}
 }
